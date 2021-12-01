@@ -9,7 +9,7 @@ namespace MedicalQueue_MoonrayLions
     class ERQueue
     {
         // ADD PRIORITY LOGIC IN ADD() !!!
-        public Patient Add(Patient head, Patient newPatient)
+        public Patient Enqueue(Patient head, Patient newPatient)
         {
             // EDGE CASE: ER QUEUE IS EMPTY
             if (head == null)
@@ -64,7 +64,7 @@ namespace MedicalQueue_MoonrayLions
             };
             return head; // THIS SHOULD NEVER FIRE
         }
-        public string ListAllPatients(Patient head)
+        public string List(Patient head)
         {   // EDGE CASE: LINKED LIST IS EMPTY
             if (head == null)
                 return "ALERT: ER QUEUE IS EMPTY";
@@ -78,6 +78,10 @@ namespace MedicalQueue_MoonrayLions
                 allNodeData += $"\n- {current.Name}";
             };
             return allNodeData; // RETURN A STRING
+        }
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
