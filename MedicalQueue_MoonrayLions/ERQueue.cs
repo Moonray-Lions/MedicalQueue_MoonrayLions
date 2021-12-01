@@ -8,43 +8,30 @@ namespace MedicalQueue_MoonrayLions
 {
     class ERQueue
     {
-        public Patient Add(Patient head, Patient newNode)
+        // ADD PRIORITY LOGIC IN ADD() !!!
+        public Patient Add(Patient head, Patient newPatient)
         {
-            // EDGE CASE: LINKED LIST IS EMPTY
+            // EDGE CASE: ER QUEUE IS EMPTY
             if (head == null)
-                return newNode;
+                return newPatient;
 
             Patient current = head;
-            // FIND END OF LIST, ADD NODE THERE
+            // FIND END OF QUEUE, ADD PATIENT THERE
             while (current != null)
             {
                 if (current.Next == null)
-                {   // NEW NODE GOES TO END OF LIST
-                    current.Next = newNode;
+                {   // NEW PATIENT GOES TO END OF LIST
+                    current.Next = newPatient;
                     return head;
                 }
                 else
-                    current = current.Next; // STEP TO NEXT NODE
+                    current = current.Next; // STEP TO NEXT PATIENT
             };
             return head;
         }
-        public Patient Contains(Patient head, string item)
-        {   // EDGE CASE: LINKED LIST IS EMPTY
-            if (head == null)
-                return null;
 
-            Patient current = head;
-            // RUN THROUGH LIST FROM HEAD TO TOE ... SORRY
-            while (current != null)
-            {   // IF MATCH IS FOUND: RETURN MATCH
-                if (current.Name.ToLower() == item.ToLower())
-                    return current;
-                else
-                    current = current.Next; // STEP TO NEXT NODE
-            };
-            return null; // ELSE: RETURN NULL
-        }
-        public Patient Remove(Patient head, string item)
+        // CHANGE METHOD TO GRAB PATIENT AT TAIL OF ER QUEUE
+        public Patient Dequeue(Patient head, string item)
         {   // EDGE CASE: MATCH, BUT ONLY ITEM IN LIST
             if (head.Name.ToLower() == item.ToLower() && head.Next == null)
             {
@@ -61,9 +48,9 @@ namespace MedicalQueue_MoonrayLions
             Patient current = head;
 
             while (current.Next != null)
-            {   // INSTEAD OF STORING "PREVIOUS NODE", DECIDED TO LOOK 2 SPOTS AHEAD IN LIST FROM CURRENT
+            {   // INSTEAD OF STORING "PREVIOUS PATIENT", DECIDED TO LOOK 2 SPOTS AHEAD IN LIST FROM CURRENT
                 if (current.Next.Name.ToLower() == item.ToLower() && current.Next.Next == null)
-                {   // EDGE CASE: SEARCHED NODE IS LAST IN LIST
+                {   // EDGE CASE: SEARCHED PATIENT IS LAST IN LIST
                     current.Next = null;
                     return head;
                 }
@@ -77,16 +64,16 @@ namespace MedicalQueue_MoonrayLions
             };
             return head; // THIS SHOULD NEVER FIRE
         }
-        public string PrintAllNodes(Patient head)
+        public string ListAllPatients(Patient head)
         {   // EDGE CASE: LINKED LIST IS EMPTY
             if (head == null)
-                return "ALERT: LINKED LIST IS EMPTY";
+                return "ALERT: ER QUEUE IS EMPTY";
 
             Patient current = head;
-            string allNodeData = "- " + current.Name; // GRAB FIRST NODE DATA
+            string allNodeData = "- " + current.Name; // GRAB FIRST PATIENT DATA
 
             while (current.Next != null)
-            {   // WHILE ADDITIONAL NODES EXIST: ADD THEIR DATA ON A NEW LINE
+            {   // WHILE ADDITIONAL PATIENTS EXIST: ADD THEIR DATA ON A NEW LINE
                 current = current.Next;
                 allNodeData += $"\n- {current.Name}";
             };
