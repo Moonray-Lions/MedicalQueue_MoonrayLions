@@ -6,10 +6,9 @@ namespace MedicalQueue_MoonrayLions
     {
         static void Main(string[] args)
         {
-            Patient head = null;
-            Patient tail = null;
+            
             ERQueue erQueue = new ERQueue();
-            //
+
             string choice;
             do
             {
@@ -19,12 +18,14 @@ namespace MedicalQueue_MoonrayLions
 
                 if (choice.ToUpper() == "A") // ADD PATIENT
                 {
-                    Console.Write("\nEnter the patient's name: ");
-                    string name = Console.ReadLine();
+                    Console.Write("\nEnter the patient's first name: ");
+                    string first = Console.ReadLine();
+                    Console.Write("\nEnter the patient's last name: ");
+                    string last = Console.ReadLine();
                     Console.Write("\nEnter the patient's priority: ");
                     int priority = int.Parse(Console.ReadLine());
 
-                    head = erQueue.Enqueue(head, new Patient(name, priority));
+                    erQueue.Enqueue(new Patient(first, last, priority));
 
                 }
                 else if (choice.ToUpper() == "P") // PROCCESS CURRENT PATIENT 

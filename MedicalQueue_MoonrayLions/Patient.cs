@@ -8,13 +8,15 @@ namespace MedicalQueue_MoonrayLions
 {
     class Patient
     {
-        private string _name;
+        private string _firstName;
+        private string _lastName;
         private int _priority;
         private Patient _next;
         private Patient _previous;
-        public Patient(string name, int priority)
+        public Patient(string first, string last, int priority)
         {
-            _name = name;
+            _firstName = first;
+            _lastName = last;
             _priority = priority;
         }
         public Patient Next
@@ -27,10 +29,15 @@ namespace MedicalQueue_MoonrayLions
             get { return _previous; }
             set { _previous = value; }
         }
-        public string Name
+        public string FirstName
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _firstName; }
+            set { _firstName = value; }
+        }
+        public string LastName
+        {
+            get { return _lastName; }
+            set { _lastName = value; }
         }
         public int Priority
         {

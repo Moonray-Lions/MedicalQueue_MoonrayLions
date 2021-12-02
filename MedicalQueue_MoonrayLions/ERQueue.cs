@@ -8,44 +8,47 @@ namespace MedicalQueue_MoonrayLions
 {
     class ERQueue
     {
+        private Patient _head = null;
+        private Patient _tail = null;
         // ADD PRIORITY LOGIC IN ADD() !!!
-        public Patient Enqueue(Patient head, Patient newPatient)
+        public Patient Enqueue(Patient newPatient)
         {
             // EDGE CASE: ER QUEUE IS EMPTY
-            if (head == null)
-                return newPatient;
-
-            Patient current = head;
+            if (_head == null)
+            {
+                _head = newPatient;
+                _tail = newPatient;
+            }
+                
+            Patient current = _head;
             // FIND END OF QUEUE, ADD PATIENT THERE
             while (current != null)
             {
                 if (current.Next == null)
                 {   // NEW PATIENT GOES TO END OF LIST
                     current.Next = newPatient;
-                    return head;
+                    return _head;
                 }
                 else
                     current = current.Next; // STEP TO NEXT PATIENT
             };
-            return head;
+            return _head;
         }
 
         // CHANGE METHOD TO GRAB PATIENT AT TAIL OF ER QUEUE
-        public Patient Dequeue(Patient head, string item)
-        {   // EDGE CASE: MATCH, BUT ONLY ITEM IN LIST
-            if (head.Name.ToLower() == item.ToLower() && head.Next == null)
+        public Patient Dequeue()
+        {
+            // EDGE CASE: NO PATIENTS
+            if (_head == null)
+                return null;
+
+            // EDGE CASE: ONLY ITEM IN LIST
+            if (_head == _tail)
             {
-                head = null;
-                return head;
-            }
-            // EDGE CASE: HEAD IS MATCH + OTHER ITEM(S) IN LIST
-            else if (head.Name.ToLower() == item.ToLower())
-            {
-                head = head.Next;
-                return head;
+                return _tail;
             }
 
-            Patient current = head;
+            Patient current = _head;
 
             while (current.Next != null)
             {   // INSTEAD OF STORING "PREVIOUS PATIENT", DECIDED TO LOOK 2 SPOTS AHEAD IN LIST FROM CURRENT
