@@ -15,7 +15,7 @@ namespace MedicalQueue_MoonrayLions
             {
                 Console.Clear();
                 Console.Write(Menu());
-                choice = Console.ReadLine();
+                choice = Console.ReadLine(); 
 
                 if (choice.ToUpper() == "A") // ADD PATIENT
                 {
