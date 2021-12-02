@@ -15,7 +15,7 @@ namespace MedicalQueue_MoonrayLions
             {
                 Console.Clear();
                 Console.Write(Menu());
-                choice = Console.ReadLine();
+                choice = Console.ReadLine(); 
 
                 if (choice.ToUpper() == "A") // ADD PATIENT
                 {
@@ -27,7 +27,7 @@ namespace MedicalQueue_MoonrayLions
                     head = erQueue.Enqueue(head, new Patient(name, priority));
 
                 }
-                else if (choice.ToUpper() == "P") // PROCCESS CURRENT PATIENT
+                else if (choice.ToUpper() == "P") // PROCCESS CURRENT PATIENT 
                 {
                     // REMOVE THE TAIL PATIENT IN ER QUEUE
                 }
