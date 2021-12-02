@@ -24,7 +24,7 @@ namespace MedicalQueue_MoonrayLions
                     Console.Write("\nEnter the patient's priority: ");
                     int priority = int.Parse(Console.ReadLine());
 
-                    head = erQueue.Add(head, new Patient(name, priority));
+                    head = erQueue.Enqueue(head, new Patient(name, priority));
 
                 }
                 else if (choice.ToUpper() == "P") // PROCCESS CURRENT PATIENT
