@@ -10,19 +10,22 @@ namespace MedicalQueue_MoonrayLions
     {
         private Patient _head = null;
         private Patient _tail = null;
+        private int _count = 0;
 
         // ADD PRIORITY LOGIC IN ADD() !!!
-        public Patient Enqueue(Patient newPatient)
+        public int Enqueue(Patient newPatient)
         {
-            Patient current = newPatient;
+            _count++;
+
             // EDGE CASE: ER QUEUE IS EMPTY
             if (_head == null)
             {
                 _head = newPatient;
-                _tail = _head;
-                return _head;
-            }
-            current = _head;
+                _tail = newPatient;
+                return _count;
+            } 
+            Patient current = _head;
+
             // FIND END OF QUEUE, ADD PATIENT THERE
             while (current != null)
             {
@@ -34,31 +37,36 @@ namespace MedicalQueue_MoonrayLions
                     Patient temp = newPatient;
                     temp.Next = _head;
                     _head = temp;
-                    return temp;
-                }
-                //handle null tail
-                if (next == null)
-                {
-                    _tail.Next = newPatient;
-                    _tail.Next.Previous = _tail;
-                    _tail = _tail.Next;
-                    return _tail;
+                    return _count;
                 }
 
                 // insert in the middle
-                if (newPatient.Priority.CompareTo(current.Priority) < 0 && 
+                else if (newPatient.Priority.CompareTo(current.Priority) < 0 && 
                     newPatient.Priority.CompareTo(next.Priority) >= 0)
                 {
                     current.Next = newPatient;
                     current.Next.Previous = current;
                     current.Next.Next = next;
                     next.Previous = current.Next;
-                    return current.Next;
+                    return _count;
                 }
 
-                current = current.Next;
+                ////handle null tail
+                //else if (next == null)
+                //{
+                //    _tail.Previous = current;
+                //    _tail.Next = newPatient;
+                //    _tail.Next.Previous = _tail;
+                //    _tail = _tail.Next;
+                //    return _count;
+                //}
+
+                else
+                {
+                    current = current.Next;
+                }
             };
-            return _head;
+            return _count;
         }
 
         // CHANGE METHOD TO GRAB PATIENT AT TAIL OF ER QUEUE
@@ -99,15 +107,15 @@ namespace MedicalQueue_MoonrayLions
 
         public string List()
         { // EDGE CASE: LINKED LIST IS EMPTY
-            if (_tail == null)
+            if (_head == null)
                 return "ALERT: ER QUEUE IS EMPTY";
 
-            Patient current = _tail;
+            Patient current = _head;
             string patients = $"{current.Priority}: {current.LastName}, {current.FirstName}";
 
-            while (current.Previous != null)
+            while (current.Next != null)
             {
-                current = current.Previous;
+                current = current.Next;
                 patients += $"\n{current.Priority}: {current.LastName}, {current.FirstName}";
             }
             return patients;
