@@ -10,7 +10,7 @@ namespace MedicalQueue_MoonrayLions
     {
         private Patient _head = null;
         private Patient _tail = null;
-        //private Patient current = null;
+
         // ADD PRIORITY LOGIC IN ADD() !!!
         public Patient Enqueue(Patient newPatient)
         {
@@ -27,8 +27,6 @@ namespace MedicalQueue_MoonrayLions
             while (current != null)
             {
                 Patient next = current.Next;
-
-                // Uh, This makes it so where head is 1 and tail is 5, so we will have to flip that at somepoint... oops..
 
                 //handle new head
                 if (newPatient.Priority.CompareTo(current.Priority) > 0)
@@ -55,33 +53,9 @@ namespace MedicalQueue_MoonrayLions
                     current.Next.Next = next;
                     next.Previous = current.Next;
                     return current.Next;
-
-                    //Patient currentTemp = current;
-                    //current = newPatient;
-                    //_head = current;
-                    ////_head.Next = current;
-                    //current = currentTemp;
                 }
 
                 current = current.Next;
-
-                //else if (1 == 1)
-                //{
-
-                //}
-                //else
-                //{ 
-
-                //}
-
-                //if (current.Next == null)
-                //{ // NEW PATIENT GOES TO END OF LIST
-
-                //    current.Next = newPatient;
-                //    return _head;
-                //}
-                //else
-                //    current = current.Next; // STEP TO NEXT PATIENT
             };
             return _head;
         }
@@ -139,7 +113,7 @@ namespace MedicalQueue_MoonrayLions
         }
         public override string ToString()
         {
-            return base.ToString();
+            return List();
         }
     }
 }
