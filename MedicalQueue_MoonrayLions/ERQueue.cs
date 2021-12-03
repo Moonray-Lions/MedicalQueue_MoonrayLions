@@ -138,7 +138,7 @@ namespace MedicalQueue_MoonrayLions
             current = _head;
             while (current != null)
             {
-                Console.WriteLine(current.Priority);
+                Console.WriteLine(current.FirstName + " "+ current.LastName + " " + current.Priority);
                 //if (_head.Next != null)
                 current = current.Next;
                 //else
