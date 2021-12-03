@@ -10,10 +10,11 @@ namespace MedicalQueue_MoonrayLions
     {
         private Patient _head = null;
         private Patient _tail = null;
-        private Patient current = null;
+        //private Patient current = null;
         // ADD PRIORITY LOGIC IN ADD() !!!
         public Patient Enqueue(Patient newPatient)
         {
+            Patient current = newPatient;
             // EDGE CASE: ER QUEUE IS EMPTY
             if (_head == null)
             {
@@ -125,26 +126,17 @@ namespace MedicalQueue_MoonrayLions
         public string List()
         { // EDGE CASE: LINKED LIST IS EMPTY
             if (_head == null)
-                return "ALERT: ER QUEUE IS EMPTY"; Patient current = _head;
-            string allNodeData = "- " + current.Priority; // GRAB FIRST PATIENT DATA while (current.Next != null)
-            { // WHILE ADDITIONAL PATIENTS EXIST: ADD THEIR DATA ON A NEW LINE
-                current = current.Next;
-                allNodeData += $"\n- {current.Priority}";
-            };
-            return allNodeData; // RETURN A STRING
-        }
-        public string PrintAll()
-        {
-            current = _head;
-            while (current != null)
+                return "ALERT: ER QUEUE IS EMPTY";
+
+            Patient current = _head;
+            string patients = $"{current.Priority}: {current.LastName}, {current.FirstName}";
+
+            while (current.Next != null)
             {
-                Console.WriteLine(current.FirstName + " "+ current.LastName + " " + current.Priority);
-                //if (_head.Next != null)
                 current = current.Next;
-                //else
-                // break;
+                patients += $"\n{current.Priority}: {current.LastName}, {current.FirstName}";
             }
-            return " ";
+            return patients;
         }
         public override string ToString()
         {

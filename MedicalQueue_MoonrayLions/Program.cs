@@ -35,7 +35,7 @@ namespace MedicalQueue_MoonrayLions
                 else if (choice.ToUpper() == "L") // LIST ALL IN QUEUE
                 {
                     // LIST ALL PATIENTS
-                    erQueue.PrintAll();
+                    Console.WriteLine(erQueue.List());
                     Console.ReadKey();
                 }
                 // QUIT
