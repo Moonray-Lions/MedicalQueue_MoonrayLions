@@ -46,7 +46,8 @@ namespace MedicalQueue_MoonrayLions
                 }
 
                 // insert in the middle
-                if (newPatient.Priority.CompareTo(current.Priority) < 0 && newPatient.Priority.CompareTo(next.Priority) >= 0)
+                if (newPatient.Priority.CompareTo(current.Priority) < 0 && 
+                    newPatient.Priority.CompareTo(next.Priority) >= 0)
                 {
                     current.Next = newPatient;
                     current.Next.Previous = current;
@@ -98,15 +99,15 @@ namespace MedicalQueue_MoonrayLions
 
         public string List()
         { // EDGE CASE: LINKED LIST IS EMPTY
-            if (_head == null)
+            if (_tail == null)
                 return "ALERT: ER QUEUE IS EMPTY";
 
-            Patient current = _head;
+            Patient current = _tail;
             string patients = $"{current.Priority}: {current.LastName}, {current.FirstName}";
 
-            while (current.Next != null)
+            while (current.Previous != null)
             {
-                current = current.Next;
+                current = current.Previous;
                 patients += $"\n{current.Priority}: {current.LastName}, {current.FirstName}";
             }
             return patients;
