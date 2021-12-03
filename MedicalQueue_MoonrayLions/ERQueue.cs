@@ -46,7 +46,7 @@ namespace MedicalQueue_MoonrayLions
                 }
 
                 // insert in the middle
-                if (newPatient.Priority.CompareTo(current.Priority) < 0 && next.Priority.CompareTo(newPatient.Priority) >= 0)
+                if (newPatient.Priority.CompareTo(current.Priority) < 0 && newPatient.Priority.CompareTo(next.Priority) >= 0)
                 {
                     current.Next = newPatient;
                     current.Next.Previous = current;
