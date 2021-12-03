@@ -30,6 +30,14 @@ namespace MedicalQueue_MoonrayLions
 
                 // Uh, This makes it so where head is 1 and tail is 5, so we will have to flip that at somepoint... oops..
 
+                //handle new head
+                if (newPatient.Priority.CompareTo(current.Priority) > 0)
+                {
+                    Patient temp = newPatient;
+                    temp.Next = _head;
+                    _head = temp;
+                    return temp;
+                }
                 //handle null tail
                 if (next == null)
                 {
@@ -39,17 +47,8 @@ namespace MedicalQueue_MoonrayLions
                     return _tail;
                 }
 
-                //handle new head
-                if (current.Priority.CompareTo(newPatient.Priority) > 0)
-                {
-                    Patient temp = newPatient;
-                    temp.Next = _head;
-                    _head = temp;
-                    return temp;
-                }
-
                 // insert in the middle
-                if (current.Priority.CompareTo(newPatient.Priority) < 0 && next.Priority.CompareTo(newPatient.Priority) >= 0)
+                if (newPatient.Priority.CompareTo(current.Priority) < 0 && next.Priority.CompareTo(newPatient.Priority) >= 0)
                 {
                     current.Next = newPatient;
                     current.Next.Previous = current;
