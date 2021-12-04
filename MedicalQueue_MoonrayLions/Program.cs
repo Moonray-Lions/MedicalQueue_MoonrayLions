@@ -44,13 +44,11 @@ namespace MedicalQueue_MoonrayLions
                 }
                 else if (choice.Key == ConsoleKey.L) // LIST ALL IN QUEUE
                 {
-                    // LIST ALL PATIENTS
                     Console.WriteLine("\n\n" + erQueue.List());
                     Console.Write("\nPress any key to continue. . .");
                     Console.ReadKey();
                 }
-                // QUIT
-            } while (choice.Key != ConsoleKey.Q);
+            } while (choice.Key != ConsoleKey.Q); // QUIT
         }
         static string Menu()
         {
