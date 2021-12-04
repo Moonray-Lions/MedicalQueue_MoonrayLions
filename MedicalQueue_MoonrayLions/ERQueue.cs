@@ -133,8 +133,11 @@
                 _tail = null;
                 return temp;
             }
-            _tail = _tail.Previous;
-            return temp;
+            else
+            {
+                _tail = _tail.Previous;
+                return temp;
+            }
         }
 
         public string List()
