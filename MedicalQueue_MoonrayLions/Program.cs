@@ -18,9 +18,23 @@ namespace MedicalQueue_MoonrayLions
                 {
                     Console.Write("\n\nFirst Name: ");
                     string first = Console.ReadLine();
-                    Console.Write("Last Name: ");
+                    while (string.IsNullOrEmpty(first))
+                    {
+                        Console.WriteLine("\nMust Enter Name");
+                        Console.Write("\nFirst Name: ");
+                        first = Console.ReadLine();
+                       
+                    }
+                    Console.Write("\nLast Name: ");
                     string last = Console.ReadLine();
-                    Console.Write("Priority: ");
+                    while (string.IsNullOrEmpty(last))
+                    {
+                        Console.WriteLine("\nMust Enter Name");
+                        Console.Write("\nLast Name: ");
+                        last = Console.ReadLine();
+
+                    }
+                    Console.Write("\nPriority: ");
                     int priority = int.Parse(Console.ReadLine());
 
                     Console.WriteLine($"\nNumber of Patients in ERQueue: " +
