@@ -75,47 +75,6 @@
                 _tail = newPatient;
                 return _count;
             }
-
-            //// FIND END OF QUEUE, ADD PATIENT THERE
-            //while (current != null)
-            //{
-            //    Patient next = current.Next;
-
-            //    //handle new head
-            //    if (newPatient.Priority.CompareTo(current.Priority) > 0)
-            //    {
-            //        Patient temp = newPatient;
-            //        temp.Next = _head;
-            //        _head = temp;
-            //        return _count;
-            //    }
-
-            //    // insert in the middle
-            //    else if (newPatient.Priority.CompareTo(current.Priority) < 0 && 
-            //        newPatient.Priority.CompareTo(next.Priority) >= 0)
-            //    {
-            //        current.Next = newPatient;
-            //        current.Next.Previous = current;
-            //        current.Next.Next = next;
-            //        next.Previous = current.Next;
-            //        return _count;
-            //    }
-
-            //    ////handle null tail
-            //    //else if (next == null)
-            //    //{
-            //    //    _tail.Previous = current;
-            //    //    _tail.Next = newPatient;
-            //    //    _tail.Next.Previous = _tail;
-            //    //    _tail = _tail.Next;
-            //    //    return _count;
-            //    //}
-
-            //    else
-            //    {
-            //        current = current.Next;
-            //    }
-            //};
         }
         public Patient Dequeue()
         {
