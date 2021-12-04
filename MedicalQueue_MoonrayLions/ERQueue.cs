@@ -6,7 +6,6 @@
         private Patient _tail = null;
         private int _count = 0;
 
-        // ADD PRIORITY LOGIC IN ADD() !!!
         public int Enqueue(Patient newPatient)
         {
             _count++;
