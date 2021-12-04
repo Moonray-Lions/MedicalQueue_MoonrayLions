@@ -10,15 +10,16 @@
         public int Enqueue(Patient newPatient)
         {
             _count++;
-            // ER QUEUE IS EMPTY
-            if (_head == null)
+            Patient current = _head;
+
+            // HEAD LOGIC -----------------------------------------------------
+            if (_head == null) // ER QUEUE IS EMPTY
             {
                 _head = newPatient;
                 _tail = newPatient;
                 return _count;
             } 
-            // ONLY 1 IN QUEUE
-            else if (_head == _tail)
+            else if (_head == _tail) // ONLY 1 IN QUEUE
             {
                 if (newPatient.Priority >= _head.Priority)
                 {
@@ -35,9 +36,6 @@
                     return _count;
                 }
             }
-
-            Patient current = _head;
-
             // MIDDLE LOGIC ---------------------------------------------------
             while (current.Next != null)
             {
@@ -63,7 +61,7 @@
             }
             // TAIL LOGIC -----------------------------------------------------
             if (newPatient.Priority >= current.Priority) 
-                // NEW PATIENT PRIORITY >= TAIL, PLEACE BEFORE TAIL
+                // NEW PATIENT PRIORITY >= TAIL: PLEACE BEFORE TAIL
             {
                 newPatient.Next = current;
                 newPatient.Previous = current.Previous;
@@ -71,7 +69,7 @@
                 return _count;
             }
             else
-            // PLACE AT END OF LIST, ASSIGN TO TAIL
+            // PLACE AT END OF LIST & ASSIGN TO TAIL
             {
                 current.Next = newPatient;
                 newPatient.Previous = current;
