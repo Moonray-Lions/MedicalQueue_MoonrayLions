@@ -6,40 +6,51 @@ namespace MedicalQueue_MoonrayLions
     {
         static void Main(string[] args)
         {
-            
             ERQueue erQueue = new ERQueue();
-
-            string choice;
+            ConsoleKeyInfo choice;
             do
             {
                 Console.Clear();
                 Console.Write(Menu());
-                choice = Console.ReadLine(); 
+                choice = Console.ReadKey(); 
 
-                if (choice.ToUpper() == "A") // ADD PATIENT
+                if (choice.Key == ConsoleKey.A) // ADD PATIENT
                 {
-                    Console.Write("\nEnter the patient's first name: ");
+                    Console.Write("\n\nFirst Name: ");
                     string first = Console.ReadLine();
-                    Console.Write("\nEnter the patient's last name: ");
+                    Console.Write("Last Name: ");
                     string last = Console.ReadLine();
-                    Console.Write("\nEnter the patient's priority: ");
+                    Console.Write("Priority: ");
                     int priority = int.Parse(Console.ReadLine());
 
-                    erQueue.Enqueue(new Patient(first, last, priority));
-
+                    Console.WriteLine($"\nNumber of Patients in ERQueue: " +
+                        $"{erQueue.Enqueue(new Patient(first, last, priority))}");
+                    Console.Write("\nPress any key to continue. . .");
+                    Console.ReadKey();
                 }
-                else if (choice.ToUpper() == "P") // PROCCESS CURRENT PATIENT 
+                else if (choice.Key == ConsoleKey.P) // PROCCESS CURRENT PATIENT 
                 {
-                    // REMOVE THE TAIL PATIENT IN ER QUEUE
+                    Patient temp = erQueue.Dequeue();
+                    if (temp == null)
+                    {
+                        Console.WriteLine("\n\nALERT: ER QUEUE IS EMPTY");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\n\nPRIORITY LEVEL {temp} SUCCESSFULLY PROCESSED");
+                    }
+                    Console.Write("\nPress any key to continue. . .");
+                    Console.ReadKey();
                 }
-                else if (choice.ToUpper() == "L") // LIST ALL IN QUEUE
+                else if (choice.Key == ConsoleKey.L) // LIST ALL IN QUEUE
                 {
                     // LIST ALL PATIENTS
-                    Console.WriteLine(erQueue.List());
+                    Console.WriteLine("\n\n" + erQueue.List());
+                    Console.Write("\nPress any key to continue. . .");
                     Console.ReadKey();
                 }
                 // QUIT
-            } while (choice != "Q");
+            } while (choice.Key != ConsoleKey.Q);
         }
         static string Menu()
         {

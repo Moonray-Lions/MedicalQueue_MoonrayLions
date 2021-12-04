@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MedicalQueue_MoonrayLions
+﻿namespace MedicalQueue_MoonrayLions
 {
     class Patient
     {
@@ -43,6 +37,11 @@ namespace MedicalQueue_MoonrayLions
         {
             get { return _priority; }
             set { _priority = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"{Priority}: {LastName}, {FirstName}";
         }
     }
 }
