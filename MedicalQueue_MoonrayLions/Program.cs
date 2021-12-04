@@ -36,13 +36,13 @@ namespace MedicalQueue_MoonrayLions
                     }
                     Console.Write("\nPriority (Highest: 1 - Lowest: 5): ");
                     int priority;
-                    bool parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
+                    bool validPriority = int.TryParse(Console.ReadLine(), out priority) && 
                         (priority > 0 && priority < 6);
-                    while (!parseSuccess)
+                    while (!validPriority)
                     {
                         Console.WriteLine("\nSet Value Between 1 & 5. . .");
                         Console.Write("\nPriority: ");
-                        parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
+                        validPriority = int.TryParse(Console.ReadLine(), out priority) && 
                             (priority > 0 && priority < 6);
                     }
                     Console.WriteLine($"\nNumber of Patients in ERQueue: " +
