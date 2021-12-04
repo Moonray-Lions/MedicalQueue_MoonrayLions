@@ -35,8 +35,13 @@ namespace MedicalQueue_MoonrayLions
 
                     }
                     Console.Write("\nPriority: ");
-                    int priority = int.Parse(Console.ReadLine());
-
+                    int priority = -1;
+                    while (!int.TryParse(Console.ReadLine(), out priority))
+                    {
+                        Console.WriteLine("Must enter number between 1 and 5 ");
+                        Console.WriteLine("Priority ");
+                        priority = int.Parse(Console.ReadLine()); 
+                    }
                     Console.WriteLine($"\nNumber of Patients in ERQueue: " +
                         $"{erQueue.Enqueue(new Patient(first, last, priority))}");
                     Console.Write("\nPress any key to continue. . .");
