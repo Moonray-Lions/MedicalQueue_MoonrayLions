@@ -68,7 +68,6 @@
                 newPatient.Next = current;
                 newPatient.Previous = current.Previous;
                 current.Previous = newPatient;
-                _tail = current;
                 return _count;
             }
             else
