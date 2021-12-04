@@ -120,7 +120,7 @@
         }
         public Patient Dequeue()
         {
-            if (_head == null)
+            if (_head == null) // NO PATIENTS IN QUEUE
             {
                 return null;
             }
@@ -128,23 +128,19 @@
             _count--;
             Patient temp = _tail;
 
-            if (_tail == _head)
+            if (_tail == _head) // 1 PATIENT IN QUEUE
             {
                 _head = null;
                 _tail = null;
                 return temp;
             }
-            // ASSIGN A NEW TAIL
             _tail = _tail.Previous;
-            // ESTABLISH THE LINK OF NEW TAIL.NEXT
-            _tail.Next = null;
-            // RETURN THE TAIL
             return temp;
         }
 
         public string List()
-        { // EDGE CASE: LINKED LIST IS EMPTY
-            if (_tail == null)
+        {
+            if (_tail == null) // QUEUE IS EMPTY
             {
                 return "ALERT: ER QUEUE IS EMPTY";
             }
