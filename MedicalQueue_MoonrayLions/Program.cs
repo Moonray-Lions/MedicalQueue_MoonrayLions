@@ -4,7 +4,7 @@ namespace MedicalQueue_MoonrayLions
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             ERQueue erQueue = new ERQueue();
             ConsoleKeyInfo choice;
@@ -36,13 +36,14 @@ namespace MedicalQueue_MoonrayLions
                     }
                     Console.Write("\nPriority: ");
                     int priority;
-                    bool parseSuccess = int.TryParse(Console.ReadLine(), out priority);
-
-                    while (!parseSuccess && !(priority is > 0 and < 6))
+                    bool parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
+                        (priority > 0 && priority < 6);
+                    while (!parseSuccess)
                     {
                         Console.WriteLine("Must enter number between 1 and 5 ");
                         Console.Write("Priority: ");
-                        parseSuccess = int.TryParse(Console.ReadLine(), out priority);
+                        parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
+                            (priority > 0 && priority < 6);
                     }
                     Console.WriteLine($"\nNumber of Patients in ERQueue: " +
                         $"{erQueue.Enqueue(new Patient(first, last, priority))}");
