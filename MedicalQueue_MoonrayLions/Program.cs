@@ -34,14 +34,14 @@ namespace MedicalQueue_MoonrayLions
                         last = Console.ReadLine();
 
                     }
-                    Console.Write("\nPriority: ");
+                    Console.Write("\nPriority (Highest: 1 - Lowest: 5): ");
                     int priority;
                     bool parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
                         (priority > 0 && priority < 6);
                     while (!parseSuccess)
                     {
-                        Console.WriteLine("Must enter number between 1 and 5 ");
-                        Console.Write("Priority: ");
+                        Console.WriteLine("\nSet Value Between 1 & 5. . .");
+                        Console.Write("\nPriority: ");
                         parseSuccess = int.TryParse(Console.ReadLine(), out priority) && 
                             (priority > 0 && priority < 6);
                     }
